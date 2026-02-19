@@ -1,0 +1,88 @@
+import { isGPT5ModelFamily, isNextGenModelProvider } from "@utils/model-utils"
+import { ModelFamily } from "@/shared/prompts"
+import { BluDefaultTool } from "@/shared/tools"
+import { SystemPromptSection } from "../../templates/placeholders"
+import { createVariant } from "../variant-builder"
+import { validateVariant } from "../variant-validator"
+import { GPT_5_TEMPLATE_OVERRIDES } from "./template"
+
+// Type-safe variant configuration using the builder pattern
+export const config = createVariant(ModelFamily.GPT_5)
+	.description("Prompt tailored to GPT-5 with text-based tools")
+	.version(1)
+	.tags("gpt", "gpt-5", "advanced", "production")
+	.labels({
+		stable: 1,
+		production: 1,
+		advanced: 1,
+	})
+	// Match GPT-5 models from providers that support native tools
+	.matcher((context) => {
+		const providerInfo = context.providerInfo
+		const modelId = providerInfo.model.id
+		return (
+			isGPT5ModelFamily(modelId) &&
+			!modelId.includes("chat") &&
+			isNextGenModelProvider(providerInfo) &&
+			!context.enableNativeToolCalls
+		)
+	})
+	.template(GPT_5_TEMPLATE_OVERRIDES.BASE)
+	.components(
+		SystemPromptSection.AGENT_ROLE,
+		SystemPromptSection.TOOL_USE,
+		SystemPromptSection.TODO,
+		SystemPromptSection.MCP,
+		SystemPromptSection.EDITING_FILES,
+		SystemPromptSection.ACT_VS_PLAN,
+		SystemPromptSection.CLI_SUBAGENTS,
+		SystemPromptSection.TASK_PROGRESS,
+		SystemPromptSection.CAPABILITIES,
+		SystemPromptSection.FEEDBACK,
+		SystemPromptSection.RULES,
+		SystemPromptSection.SYSTEM_INFO,
+		SystemPromptSection.OBJECTIVE,
+		SystemPromptSection.USER_INSTRUCTIONS,
+	)
+	.tools(
+		BluDefaultTool.BASH,
+		BluDefaultTool.FILE_READ,
+		BluDefaultTool.FILE_NEW,
+		BluDefaultTool.FILE_EDIT,
+		BluDefaultTool.SEARCH,
+		BluDefaultTool.LIST_FILES,
+		BluDefaultTool.LIST_CODE_DEF,
+		BluDefaultTool.BROWSER,
+		BluDefaultTool.WEB_FETCH,
+		BluDefaultTool.MCP_USE,
+		BluDefaultTool.MCP_ACCESS,
+		BluDefaultTool.ASK,
+		BluDefaultTool.ATTEMPT,
+		BluDefaultTool.NEW_TASK,
+		BluDefaultTool.PLAN_MODE,
+		BluDefaultTool.MCP_DOCS,
+		BluDefaultTool.TODO,
+	)
+	.placeholders({
+		MODEL_FAMILY: ModelFamily.GPT_5,
+	})
+	.config({})
+	// Override the RULES component with custom template
+	.overrideComponent(SystemPromptSection.RULES, {
+		template: GPT_5_TEMPLATE_OVERRIDES.RULES,
+	})
+	.build()
+
+// Compile-time validation
+const validationResult = validateVariant({ ...config, id: ModelFamily.GPT_5 }, { strict: true })
+if (!validationResult.isValid) {
+	console.error("GPT-5 variant configuration validation failed:", validationResult.errors)
+	throw new Error(`Invalid GPT-5 variant configuration: ${validationResult.errors.join(", ")}`)
+}
+
+if (validationResult.warnings.length > 0) {
+	console.warn("GPT-5 variant configuration warnings:", validationResult.warnings)
+}
+
+// Export type information for better IDE support
+export type GPT5VariantConfig = typeof config
