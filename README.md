@@ -6,6 +6,14 @@
   </sub>
 </div>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Under%20Development-orange?style=for-the-badge" />
+</p>
+
+> [!WARNING]
+> **Project Status: Under Active Development**
+> Blu is currently in early development and is not yet ready for stable use. Features may change, and we do not recommend using it for production tasks quite yet.
+
 <h1 align="center">
   Blu - Power up your tools with the one they've been missing.
 </h1>
