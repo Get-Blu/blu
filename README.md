@@ -1,45 +1,35 @@
 <div align="center">
-  <sub>
-    English |
-    <a href="docs/i18n/README.es.md">Español</a> |
-    <a href="docs/i18n/README.zh.md">简体中文</a>
-  </sub>
+
+# 🚨 THIS PROJECT IS NO LONGER MAINTAINED 🚨
+
+<img src="https://img.shields.io/badge/Status-ARCHIVED-red?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Maintained-NO-critical?style=for-the-badge" />
+
 </div>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Status-Under%20Development-orange?style=for-the-badge" />
-</p>
+> [!CAUTION]
+> ## ⚠️ Project Archived — No Longer Maintained
+>
+> **This repository has been archived and is no longer actively maintained or supported.**
+>
+> - 🚫 No new features will be added
+> - 🚫 No bug fixes will be made
+> - 🚫 No pull requests or issues will be reviewed
+> - 🚫 The extension will no longer receive updates
+>
+> This project was built as a personal fork of [Cline](https://github.com/cline/cline). It served its purpose and we're grateful to everyone who tried it out. It's time to move on.
+>
+> If you're looking for an AI coding assistant, we recommend checking out [Cline](https://github.com/cline/cline) — the upstream project this was based on.
 
-> [!WARNING]
-> **Project Status: Under Active Development**
-> Blu is currently in early development and is not yet ready for stable use. Features may change, and we do not recommend using it for production tasks quite yet.
+---
 
 <h1 align="center">
   Blu - Power up your tools with the one they've been missing.
 </h1>
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/Get-Blu/blu?style=flat-square&logo=github" />
-<img src="https://img.shields.io/github/issues/Get-blu/blu?style=flat-square&logo=github" />
-<img src="https://img.shields.io/github/license/Get-Blu/blu?style=flat-square&color=blue" />
-<img src="https://img.shields.io/visual-studio-marketplace/v/Garv.blu?style=flat-square&logo=visualstudiocode&color=007ACC" />
-<img src="https://img.shields.io/visual-studio-marketplace/i/Garv.blu?style=flat-square&color=blueviolet" />
-<img src="https://img.shields.io/visual-studio-marketplace/r/Garv.blu?style=flat-square&color=yellow" />
-
+  <em>Historical README preserved below for reference.</em>
 </p>
-
-<div align="center">
-  <table>
-    <tbody>
-      <td align="center">
-        <a href="https://marketplace.visualstudio.com/items?itemName=Garv.blu" target="_blank"><strong>Download on VS Marketplace</strong></a>
-      </td>
-      <td align="center">
-        <a href="https://github.com/Get-Blu/blu/discussions" target="_blank"><strong>Feature Requests</strong></a>
-      </td>
-    </tbody>
-  </table>
-</div>
 
 ---
 
